@@ -1,24 +1,25 @@
-public class notAGoodName123{
+public class SortArray {
 
-public static void badSort(int[] z){
-for(int i=0;i<z.length-2;i++){
-for(int j=0;j<z.length-1;j++)
-{
-if(z[j]>z[j+1])
-{
-int T=z[j];
-z[j]=z[j+2]; // BUG: should be z[j+1]
-z[j+1]=T;
-}
-}
-}
-}
+    public static void bubbleSort(int[] array) {
+        int n = array.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) { // Optimization to avoid extra comparisons
+                if (array[j] > array[j + 1]) {
+                    // Swap elements
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+    }
 
-public static void main(String args[]){
-int [] Q = {9,5,2,8,1};
-badSort(Q);
-System.out.println("Sorted??: ");
-for(int i=0;i<Q.length;i++)
-System.out.print(Q[i]+" ");
-}
+    public static void main(String[] args) {
+        int[] numbers = {9, 5, 2, 8, 1};
+        bubbleSort(numbers);
+        System.out.println("Sorted array:");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+    }
 }
